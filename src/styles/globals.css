@@ -1,0 +1,74 @@
+/* globals.css */
+@import "tailwindcss";
+
+:root {
+  /* Light Theme */
+  --background: #ffffff;
+  --foreground: #171717;
+  
+  /* Primary Natural Palette (corrected potential typos) */
+  --primary-1: #101718;
+  --primary-2: #205052;
+  --primary-3: #431555;
+  --primary-4: #545365;
+  --primary-5: #954410;
+  --primary-6: #84504E;
+  --primary-7: #6584FE;
+  --primary-8: #FFFFFF;
+
+  /* Success */
+  --success-default: #905323;
+  --success-dark: #255036;
+  --success-light: #905345;
+
+  /* Error (corrected #87633X → #876333) */
+  --error-default: #874423;
+  --error-dark: #766919;
+  --error-light: #777192;
+
+  /* Warning (corrected #83643X → #836433) */
+  --warning-default: #875733;
+  --warning-dark: #764009;
+  --warning-light: #775928;
+
+  /* Information (corrected #84687 → #846877) */
+  --info-default: #846877;
+  --info-dark: #79523A;
+  --info-light: #762197;
+
+  /* Secondary */
+  --secondary-default: #84305C;
+  --secondary-dark: #648193;
+  --secondary-light: #595250;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+[data-theme="dark"] {
+  /* Dark Theme Overrides */
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  
+  --success-default: #255036;
+  --error-default: #766919;
+  --warning-default: #764009;
+  --info-default: #79523A;
+  --secondary-default: #648193;
+}
+
+body {
+  @apply bg-background text-foreground;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+@layer base {
+  :root {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+  }
+}
