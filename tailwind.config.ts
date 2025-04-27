@@ -102,6 +102,68 @@ module.exports = {
       },
       fontFamily: {
         algecom: ['var(--font-algecom)'],
+      },
+      keyframes: {
+
+        'fade-in-1': {
+          '0%': { opacity: '0', transform: 'translateY(-10px)' },
+          '20%': { opacity: '1', transform: 'translateY(0)' },
+          '33%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '0', transform: 'translateY(-10px)' }
+        },
+        'fade-in-2': {
+          '0%, 33%': { opacity: '0', transform: 'translateY(-10px)' },
+          '53%': { opacity: '1', transform: 'translateY(0)' },
+          '66%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '0', transform: 'translateY(-10px)' }
+        },
+        'fade-in-3': {
+          '0%, 66%': { opacity: '0', transform: 'translateY(-10px)' },
+          '86%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateY(10px)' }
+        },
+        
+        'fade-in-4': {
+          '0%, 86%': { opacity: '0', transform: 'translateY(-10px)' },
+          '93%': { opacity: '1', transform: 'translateY(0)' },
+          '100%': { opacity: '0', transform: 'translateY(10px)' }
+        },
+
+        'fade-in': {
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' }
+        },
+        'glow-pulse': {
+          '0%, 100%': {
+            'background-color': '#F97316',
+            'color': 'white',
+            'box-shadow': '0 0 0 0 rgba(249, 115, 22, 0.4)'
+          },
+          '50%': {
+            'background-color': 'white',
+            'color': '#F97316',
+            'box-shadow': '0 0 20px 10px rgba(249, 115, 22, 0.2)'
+          }
+        },
+        'color-pulse': {
+          '0%, 100%': {
+            'background-color': '#F97316',
+            'color': 'white'
+          },
+          '50%': {
+            'background-color': 'white',
+            'color': '#F97316'
+          }
+        }
+      },
+      animation: {
+        'fade-in-1': 'fade-in-1 6s ease-out infinite',
+        'fade-in-2': 'fade-in-2 6s ease-out infinite',
+        'fade-in-3': 'fade-in-3 6s ease-out infinite',
+        'fade-in-4': 'fade-in-4 6s ease-out infinite',
+        'glow': 'color-pulse 2s ease-in-out infinite',
+         'fade-in': 'fade-in 0.3s ease-out'
+ 
       }
     },
   },
