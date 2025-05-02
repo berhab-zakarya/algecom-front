@@ -155,7 +155,6 @@ export default function LoginPage() {
                                     title={loading ? "Logging in..." : "Log In"} 
                                     className="w-full py-3 rounded-full bg-blue-800 text-white font-medium"
 
-                                    state={!loading}
                                     type="submit"
                                 />
                             </div>

@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import "@/styles/globals.css"
 import { Poppins } from 'next/font/google'
+import { Sidebar } from "@/components/common/Sidebar"
 
 const poppins = Poppins({
     weight: ['400', '500', '600', '700'],
@@ -20,7 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <div className={`${poppins.className}`}>
-        {children}
+       <div className="flex min-h-screen bg-gray-50">
+        <Sidebar />
+        <main className="flex-1">{children}</main>
+      </div>
     </div>
   )
 }
