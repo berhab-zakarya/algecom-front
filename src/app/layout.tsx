@@ -4,7 +4,7 @@ import "@/styles/globals.css"
 import { algecomFont } from "@/styles/fonts"
 
 export const metadata: Metadata = {
-  title: "Your App Name",
+  title: "Algecom",
   description: "Description of your application",
 }
 

@@ -1,9 +1,10 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  
+
   /* Primary Neutral Palette */
   --primary-900: #1D317B;
   --primary-800: #2D3D92;
@@ -14,7 +15,7 @@
   --primary-300: #E5E5FF;
   --primary-200: #E7D9FE;
   --primary-100: #F7F4FF;
-  
+
   /* Success Palette */
   --success-900: #3B6506;
   --success-800: #467A0B;
@@ -25,7 +26,7 @@
   --success-300: #C9F170;
   --success-200: #DEFA95;
   --success-100: #F2FED7;
-  
+
   /* Error Palette */
   --error-900: #7A0919;
   --error-800: #93081B;
@@ -36,7 +37,7 @@
   --error-300: #FFA37A;
   --error-200: #FFCBA6;
   --error-100: #FFE7D3;
-  
+
   /* Warning Palette */
   --warning-900: #7A4005;
   --warning-800: #936312;
@@ -47,7 +48,7 @@
   --warning-300: #FFE488;
   --warning-200: #FFEFBD;
   --warning-100: #FFEBD7;
-  
+
   /* Information Palette */
   --info-900: #1D327A;
   --info-800: #1A4395;
@@ -58,7 +59,7 @@
   --info-300: #8BD3FF;
   --info-200: #94E5FF;
   --info-100: #DCF2FF;
-  
+
   /* Secondary Palette */
   --secondary-900: #040815;
   --secondary-800: #050C19;
@@ -69,19 +70,92 @@
   --secondary-300: #A0A38F;
   --secondary-200: #C5C6B3;
   --secondary-100: #E5E6F4;
+  --radius: 0.625rem;
+  --background: #FFFFFF; /* primary-400 */
+  --foreground: #1D317B; /* primary-900 */
+  --card: #FFFFFF; /* primary-400 */
+  --card-foreground: #1D317B; /* primary-900 */
+  --popover: #FFFFFF; /* primary-400 */
+  --popover-foreground: #1D317B; /* primary-900 */
+
+  --primary: #7C92FC; /* primary-500 */
+  --primary-foreground: #1D317B; /* primary-900 */
+
+  --secondary: #E5E5FF; /* primary-300 */
+  --secondary-foreground: #1D317B; /* primary-900 */
+
+  --muted: #E7D9FE; /* primary-200 */
+  --muted-foreground: #2D3D92; /* primary-800 */
+
+  --accent: #F7F4FF; /* primary-100 */
+  --accent-foreground: #1D317B; /* primary-900 */
+
+  --destructive: #FF4423; /* error-500 */
+  --destructive-foreground: #FFFFFF;
+
+  --border: #E5E5FF; /* primary-300 */
+  --input: #E5E5FF; /* primary-300 */
+  --ring: #7C92FC; /* primary-500 */
+
+  --chart-1: #9CD323; /* success-500 */
+  --chart-2: #FF4423; /* error-500 */
+  --chart-3: #FFC73A; /* warning-500 */
+  --chart-4: #5AA6FF; /* info-500 */
+  --chart-5: #559711; /* success-700 */
+
+  /* Sidebar Colors */
+  --sidebar: #F7F4FF; /* primary-100 */
+  --sidebar-foreground: #1D317B; /* primary-900 */
+  --sidebar-primary: #2D3D92; /* primary-800 */
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #7C92FC; /* primary-500 */
+  --sidebar-accent-foreground: #1D317B; /* primary-900 */
+  --sidebar-border: #E5E5FF; /* primary-300 */
+  --sidebar-ring: #7C92FC;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-algecom: var(--font-algecom);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    
+
     /* Dark mode adjustments */
     --primary-500: #5E43DB;
     --success-500: #77B519;
@@ -95,7 +169,7 @@
 [data-theme="dark"] {
   --background: #0a0a0a;
   --foreground: #ededed;
-  
+
   /* Dark theme adjustments */
   --primary-900: #1D317B;
   --primary-800: #2D3D92;
@@ -106,7 +180,7 @@
   --primary-300: #5E43DB;
   --primary-200: #4226B5;
   --primary-100: #2D3D92;
-  
+
   /* Success Palette - Dark Mode */
   --success-900: #3B6506;
   --success-800: #467A0B;
@@ -117,7 +191,7 @@
   --success-300: #77B519;
   --success-200: #559711;
   --success-100: #467A0B;
-  
+
   /* Error Palette - Dark Mode */
   --error-900: #7A0919;
   --error-800: #93081B;
@@ -128,7 +202,7 @@
   --error-300: #DB2719;
   --error-200: #B71112;
   --error-100: #93081B;
-  
+
   /* Warning Palette - Dark Mode */
   --warning-900: #7A4005;
   --warning-800: #936312;
@@ -139,7 +213,7 @@
   --warning-300: #DBA32A;
   --warning-200: #B7821D;
   --warning-100: #936312;
-  
+
   /* Information Palette - Dark Mode */
   --info-900: #1D327A;
   --info-800: #1A4395;
@@ -150,7 +224,7 @@
   --info-300: #5D81DB;
   --info-200: #3A65B7;
   --info-100: #1A4395;
-  
+
   /* Secondary Palette - Dark Mode */
   --secondary-900: #040815;
   --secondary-800: #050C19;
@@ -164,8 +238,6 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: var(--font-algecom), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -173,5 +245,14 @@ body {
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }
