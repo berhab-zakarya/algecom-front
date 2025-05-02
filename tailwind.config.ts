@@ -102,6 +102,7 @@ module.exports = {
       },
       fontFamily: {
         algecom: ['var(--font-algecom)'],
+        outfit: ['var(--font-outfit)'], 
       },
       keyframes: {
 

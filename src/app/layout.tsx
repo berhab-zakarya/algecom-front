@@ -1,10 +1,10 @@
 import type { Metadata } from "next"
 import { ThemeProvider } from "@/components/theme/theme-provider"
 import "@/styles/globals.css"
-import { algecomFont } from "@/styles/fonts"
+import { outfitFont } from "@/styles/fonts"
 
 export const metadata: Metadata = {
-  title: "Your App Name",
+  title: "Algecom",
   description: "Description of your application",
 }
 
@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${algecomFont.variable}`}>
+      <body className={`${outfitFont.variable}`}>
         <ThemeProvider>
           {children}
         </ThemeProvider>

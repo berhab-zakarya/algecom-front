@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.2",
     "@radix-ui/react-avatar": "^1.1.7",
     "@radix-ui/react-checkbox": "^1.2.3",
     "@radix-ui/react-dialog": "^1.1.11",
@@ -17,7 +18,20 @@
     "@radix-ui/react-slot": "^1.2.0",
     "@radix-ui/react-switch": "^1.2.2",
     "@radix-ui/react-tooltip": "^1.2.4",
+    "@react-three/drei": "^10.0.7",
+    "@react-three/fiber": "^9.1.2",
     "@tabler/icons-react": "^3.31.0",
+    "@tiptap/extension-bullet-list": "^2.11.9",
+    "@tiptap/extension-code-block": "^2.11.9",
+    "@tiptap/extension-color": "^2.11.9",
+    "@tiptap/extension-heading": "^2.11.9",
+    "@tiptap/extension-link": "^2.11.9",
+    "@tiptap/extension-ordered-list": "^2.11.9",
+    "@tiptap/extension-text-align": "^2.11.9",
+    "@tiptap/extension-underline": "^2.11.9",
+    "@tiptap/react": "^2.11.9",
+    "@tiptap/starter-kit": "^2.11.9",
+    "@types/three": "^0.176.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "framer-motion": "^12.9.2",
@@ -26,7 +40,8 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.56.1",
-    "tailwind-merge": "^3.2.0"
+    "tailwind-merge": "^3.2.0",
+    "three": "^0.176.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

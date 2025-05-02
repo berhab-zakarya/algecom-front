@@ -1,8 +1,11 @@
 import localFont from 'next/font/local'
 
-
-export const algecomFont = localFont({
-  src: '../../public/assets/fonts/revolution.ttf',
-  variable: '--font-algecom',
+export const outfitFont = localFont({
+  src: '../../public/assets/fonts/Outfit-VariableFont_wght.ttf',
+  variable: '--font-outfit',
+  display: 'swap',
+  fallback: ['system-ui', 'arial'],
 })
-export const fontFamily = `font-[family-name:var(--font-algecom)]`;
+
+// تعريف fontFamily مع خط Outfit فقط
+export const fontFamily = `font-[family-name:var(--font-outfit)] text-sm`
