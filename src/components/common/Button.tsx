@@ -7,41 +7,34 @@ import { cn } from "@/lib/utils";
 
 // Define the button variants using class-variance-authority
 const buttonVariants = cva(
-  "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
+  "inline-flex items-center justify-center font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
       variant: {
-        // Primary variants
-        primary: "bg-primary-900 text-white hover:bg-primary-700",
-        "primary-outline": "border border-primary-900 text-primary-900 bg-transparent hover:bg-primary-100",
-        "primary-ghost": "text-primary-900 hover:bg-primary-100",
+        primary: "bg-[var(--primary-900)] text-white hover:bg-[var(--primary-700)]",
+        "primary-outline": "border border-[var(--primary-900)] text-[var(--primary-900)] bg-transparent hover:bg-[var(--primary-100)]",
+        "primary-ghost": "text-[var(--primary-900)] hover:bg-[var(--primary-100)]",
 
-        // Secondary variants
-        secondary: "bg-secondary-900 text-white hover:bg-secondary-700",
-        "secondary-outline": "border border-secondary-900 text-secondary-900 bg-transparent hover:bg-secondary-100",
-        "secondary-ghost": "text-secondary-900 hover:bg-secondary-100",
+        secondary: "bg-[var(--secondary-900)] text-white hover:bg-[var(--secondary-700)]",
+        "secondary-outline": "border border-[var(--secondary-900)] text-[var(--secondary-900)] bg-transparent hover:bg-[var(--secondary-100)]",
+        "secondary-ghost": "text-[var(--secondary-900)] hover:bg-[var(--secondary-100)]",
 
-        // Success variants
-        success: "bg-success-900 text-white hover:bg-success-700",
-        "success-outline": "border border-success-900 text-success-900 bg-transparent hover:bg-success-100",
-        "success-ghost": "text-success-900 hover:bg-success-100",
+        success: "bg-[var(--success-900)] text-white hover:bg-[var(--success-700)]",
+        "success-outline": "border border-[var(--success-900)] text-[var(--success-900)] bg-transparent hover:bg-[var(--success-100)]",
+        "success-ghost": "text-[var(--success-900)] hover:bg-[var(--success-100)]",
 
-        // Error variants
-        error: "bg-error-900 text-white hover:bg-error-700",
-        "error-outline": "border border-error-900 text-error-900 bg-transparent hover:bg-error-100",
-        "error-ghost": "text-error-900 hover:bg-error-100",
+        error: "bg-[var(--error-900)] text-white hover:bg-[var(--error-700)]",
+        "error-outline": "border border-[var(--error-900)] text-[var(--error-900)] bg-transparent hover:bg-[var(--error-100)]",
+        "error-ghost": "text-[var(--error-900)] hover:bg-[var(--error-100)]",
 
-        // Gray variants
-        gray: "bg-neutral-300 text-neutral-900 hover:bg-neutral-400",
-        "gray-outline": "border border-neutral-300 text-neutral-900 bg-transparent hover:bg-neutral-100",
-        "gray-ghost": "text-neutral-900 hover:bg-neutral-100",
+        gray: "bg-gray-400 text-[var(--neutral-900)] hover:bg-[var(--neutral-400)]",
+        "gray-outline": "border border-[var(--neutral-300)] text-[var(--neutral-900)] bg-transparent hover:bg-[var(--neutral-100)]",
+        "gray-ghost": "text-[var(--neutral-900)] hover:bg-[var(--neutral-100)]",
 
-        // White variants
-        white: "bg-white text-neutral-900 hover:bg-neutral-100",
-        "white-outline": "border border-white text-neutral-900 bg-transparent hover:bg-neutral-100",
-        "white-ghost": "text-neutral-900 hover:bg-neutral-100",
+        white: "bg-white text-[var(--neutral-900)] hover:bg-[var(--neutral-100)]",
+        "white-outline": "border border-white text-[var(--neutral-900)] bg-transparent hover:bg-[var(--neutral-100)]",
+        "white-ghost": "text-[var(--neutral-900)] hover:bg-[var(--neutral-100)]",
 
-        // Default fallback to shadcn variants
         default: "",
         destructive: "",
         outline: "",

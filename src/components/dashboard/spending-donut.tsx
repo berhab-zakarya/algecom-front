@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { fetchSpendingData } from "@/services/spending-stats/api"
-import type { SpendingData, SpendingCategory } from "@/lib/types"
+import type { SpendingData, SpendingCategory } from "@/types/types"
 
 interface ChartSegment extends SpendingCategory {
   percentage: number
@@ -102,7 +102,7 @@ export function SpendingDonut() {
 
   return (
     <div className="font-['Outfit']">
-      <div className="bg-white rounded-3xl p-6 shadow-lg lg:min-w-[400px]">
+      <div className="bg-white rounded-3xl p-6 lg:min-w-[300px]">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-blue-800 text-2xl font-semibold">Spend by category</h2>
           <button 
@@ -118,7 +118,7 @@ export function SpendingDonut() {
         </div>
 
         <div className="relative flex justify-center items-center mb-10">
-          <div className="w-64 h-64 relative">
+          <div className="w-48 h-48 relative">
             <svg 
               viewBox="0 0 100 100" 
               className="transform -rotate-90 w-full h-full"

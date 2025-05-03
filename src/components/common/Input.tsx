@@ -24,6 +24,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       variant = "default",
       size = "md",
       radius = "full",
+      style,
       ...props
     },
     ref
@@ -37,12 +38,12 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <div
         className={cn(
           "relative flex items-center font-algecom",
-          // Custom variants
-          variant === "primary" && "border-primary-900 focus-within:border-primary-700",
-          variant === "secondary" && "border-secondary-900 focus-within:border-secondary-700",
-          variant === "error" && "border-error-900 focus-within:border-error-700",
-          variant === "success" && "border-success-900 focus-within:border-success-700",
-          variant === "default" && "border-neutral-300 focus-within:border-primary-900",
+          // Custom variants (use Tailwind CSS variable colors like in Button)
+          variant === "primary" && "border-[var(--primary-900)] focus-within:border-[var(--primary-700)]",
+          variant === "secondary" && "border-[var(--secondary-900)] focus-within:border-[var(--secondary-700)]",
+          variant === "error" && "border-[var(--error-900)] focus-within:border-[var(--error-700)]",
+          variant === "success" && "border-[var(--success-900)] focus-within:border-[var(--success-700)]",
+          variant === "default" && "border-[var(--neutral-300)] focus-within:border-[var(--primary-900)]",
           // Size
           size === "sm" && "h-8 text-xs",
           size === "md" && "h-10 text-sm",
@@ -57,6 +58,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           "border px-3 py-2 transition-colors w-full bg-white",
           className
         )}
+        style={style}
       >
         {leftIcon && (
           <>
@@ -67,11 +69,15 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <UIInput
           ref={ref}
           className={cn(
-            "flex-1 bg-transparent border-0 focus:ring-0 outline-none placeholder:text-neutral-400",
+            "flex-1 h-full bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:ring-0 focus:ring-offset-0 focus:outline-none focus-visible:outline-none focus:bg-white placeholder:text-neutral-400",
             leftIcon && "pl-0",
             rightIcon && "pr-10"
           )}
-          style={{ boxShadow: "none" }} // يمنع ظهور المستطيل الصغير
+          style={{ 
+            boxShadow: "none",
+            outline: "none",
+            padding: "0"
+          }}
           {...props}
         />
         {rightIcon && (
@@ -89,3 +95,55 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
 );
 
 Input.displayName = "Input";
+
+
+
+interface SimpleInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
+  iconFirst?: React.ReactNode;
+  iconLast?: React.ReactNode;
+  width?: string | number;
+  height?: string | number;
+}
+
+const SimpleInput = React.forwardRef<HTMLInputElement, SimpleInputProps>(
+  (
+    { className = "", iconFirst, iconLast, width, height, style, ...props },
+    ref
+  ) => (
+    <div
+      className={cn(
+        "flex items-center border border-gray-300 rounded-md bg-white px-3 py-2",
+        className
+      )}
+      style={{ width, height, ...style }}
+    >
+      {iconFirst && (
+        <span className="flex items-center mr-2">{iconFirst}</span>
+      )}
+      <UIInput
+        ref={ref}
+        className={cn(
+          "flex-1 h-full bg-transparent border-0",
+          "focus:outline-none focus-visible:outline-none",
+          "focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0",
+          "placeholder:text-neutral-400",
+          className
+        )}
+        style={{ 
+          boxShadow: "none",
+          outline: "none",
+          padding: "0 8px", // زيادة padding لإبعاد cursor عن الأيقونة
+          fontSize: "inherit",
+          ...style
+        }}
+        {...props}
+      />
+      {iconLast && <span className="ml-2">{iconLast}</span>}
+    </div>
+  )
+);
+
+SimpleInput.displayName = "SimpleInput";
+
+export default SimpleInput;
