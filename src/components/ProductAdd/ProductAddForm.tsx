@@ -24,6 +24,7 @@ import ShippingComponent from "./ShippingComponent";
 import { Button } from "../common/Button";
 import { Dialog } from "@headlessui/react"; // تأكد من تثبيت الحزمة أو استخدم أي Dialog آخر
 import ProductSidebar from "./ProductSidebar";
+import ProductDescriptionEditor from "./ProductDescriptionEditor";
 
 function UrlDialogButton() {
   const [showUrlInput, setShowUrlInput] = useState(false);
@@ -311,10 +312,10 @@ export default function ProductAddForm() {
                 Description
               </h2>
 
-              <div className="border border-gray-300 rounded-md overflow-hidden bg-white">
-                <EditorToolbar editor={editor} />
-                <EditorContent editor={editor} className="p-4 min-h-32" />
-              </div>
+             <div className="border border-gray-300 rounded-md overflow-hidden bg-white">
+                <ProductDescriptionEditor editor={editor} />
+               
+              </div> 
             </div>
 
             {/* Media Card */}

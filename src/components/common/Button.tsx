@@ -27,7 +27,7 @@ const buttonVariants = cva(
         "error-outline": "border border-[var(--error-900)] text-[var(--error-900)] bg-transparent hover:bg-[var(--error-100)]",
         "error-ghost": "text-[var(--error-900)] hover:bg-[var(--error-100)]",
 
-        gray: "bg-[var(--neutral-300)] text-[var(--neutral-900)] hover:bg-[var(--neutral-400)]",
+        gray: "bg-gray-400 text-[var(--neutral-900)] hover:bg-[var(--neutral-400)]",
         "gray-outline": "border border-[var(--neutral-300)] text-[var(--neutral-900)] bg-transparent hover:bg-[var(--neutral-100)]",
         "gray-ghost": "text-[var(--neutral-900)] hover:bg-[var(--neutral-100)]",
 
