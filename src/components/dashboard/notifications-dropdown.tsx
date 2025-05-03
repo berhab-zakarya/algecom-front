@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import { Bell } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { NotificationIcon } from "../icons"
 
 // Sample notifications data
 const notifications = [
@@ -53,7 +53,7 @@ export function NotificationsDropdown() {
     <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="relative h-9 w-9 rounded-full">
-          <Bell className="h-6 w-6 text-[#828282]" />
+          <NotificationIcon className="h-6 w-6 text-[#828282]" />
           {unreadCount > 0 && <span className="absolute top-0 right-0 h-2.5 w-2.5 rounded-full bg-[#fa8f45]"></span>}
         </Button>
       </DropdownMenuTrigger>

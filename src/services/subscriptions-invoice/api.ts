@@ -1,4 +1,4 @@
-import type { SubscriptionData, SubscriptionResponse } from '@/lib/types';
+import type { SubscriptionData, SubscriptionResponse } from '@/types/types';
 
 export async function submitSubscription(data: SubscriptionData): Promise<SubscriptionResponse> {
   try {
