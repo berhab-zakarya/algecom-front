@@ -9,7 +9,7 @@ import BalanceCard from './balance-card'
 
 export function DashboardContent() {
   return (
-    <div className="p-6 space-y-6 font-['Outfit']">
+    <div className="ml-64 p-6 space-y-6">
       {/* First row - Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Total Income Card */}
@@ -26,7 +26,6 @@ export function DashboardContent() {
                   <span className="text-neutral-500 text-xl ml-2">(DZD)</span>
                 </div>
               </div>
-
               <div className="mb-4">
                 <p className="text-sm mt-2">
                   <span className="text-success-500 font-medium">20%</span>
@@ -51,7 +50,6 @@ export function DashboardContent() {
                   <span className="text-neutral-500 text-xl ml-2">(DZD)</span>
                 </div>
               </div>
-
               <div className="mb-4">
                 <p className="text-sm mt-2">
                   <span className="text-error-500 font-medium">10%</span>
