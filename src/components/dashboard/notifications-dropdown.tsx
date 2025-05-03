@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { NotificationIcon } from "@/components/icons"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,7 +12,6 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import { NotificationIcon } from "../icons"
 
 // Sample notifications data
 const notifications = [

@@ -1,3 +1,46 @@
+// "use client";
+// import Image from "next/image";
+// import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
+// import Button from "../resuable/Button";
+
+// export function HeroSection() {
+//   const words = [
+//     {
+//       text: "Building",
+//     },
+//     {
+//       text: "the",
+//     },
+//     {
+//       text: "FUTURE",
+//       className: "text-primary",
+//     },
+//     {
+//       text: "of",
+//     },
+//     {
+//       text: "you.",
+//     },
+//   ];
+
+//   return (
+//     <div className="relative flex flex-col items-center justify-center h-[20rem] px-4">
+//       {/* Background */}
+
+//       {/* Text */}
+//       <p className="text-neutral-600 dark:text-neutral-200 text-xs sm:text-base mb-2">
+//         Building the Future of you
+//       </p>
+//       <TypewriterEffectSmooth words={words} />
+
+//       {/* Email Input + Button */}
+//       <div className="mt-6 flex flex-col md:flex-row items-center gap-4 w-full max-w-md">
+
+//       </div>
+//     </div>
+//   );
+// }
+
 "use client";
 import Button from "../resuable/Button";
 import { TypewriterEffectSmooth } from "../ui/typewriter-effect";
@@ -16,7 +59,7 @@ export function HeroSection() {
       className: "text-purple-800",
     },
     {
-      text: "of",
+      text: "for",
     },
     {
       text: "you.",

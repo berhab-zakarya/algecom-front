@@ -1,6 +1,5 @@
 "use client"
 
-import type { SpendingStatistics } from "@/types/types"
 import type React from "react"
 
 import { useRef, useState } from "react"
@@ -10,22 +9,29 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 
-interface SpendingStatisticsProps {
-  data: SpendingStatistics
+// This type represents the data structure we'll receive from the database
+type SpendingData = {
+  month: string
+  amount: number
+  maxAmount: number
+}
+
+type SpendingStatisticsProps = {
+  data: SpendingData[]
+  year: number
   onYearChange: (year: number) => void
   className?: string
 }
 
-export default function SpendingStatistics({ data, onYearChange, className }: SpendingStatisticsProps) {
+export default function SpendingStatistics({ data, year, onYearChange, className }: SpendingStatisticsProps) {
   const [activeBar, setActiveBar] = useState<number | null>(null)
   const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 })
   const chartRef = useRef<HTMLDivElement>(null)
 
   // Format the data for the chart
-  const chartData = data.monthlyData.map((item, index) => ({
+  const chartData = data.map((item, index) => ({
     name: item.month,
     value: item.amount,
-    maxAmount: item.maxAmount,
     index,
   }))
 
@@ -60,17 +66,17 @@ export default function SpendingStatistics({ data, onYearChange, className }: Sp
             variant="outline"
             size="icon"
             className="h-10 w-10 rounded-lg border-[#1e3a8a] text-[#1e3a8a]"
-            onClick={() => onYearChange(data.year - 1)}
+            onClick={() => onYearChange(year - 1)}
           >
             <ChevronLeft className="h-4 w-4" />
             <span className="sr-only">Previous year</span>
           </Button>
-          <span className="text-xl font-medium text-[#1e3a8a]">{data.year}</span>
+          <span className="text-xl font-medium text-[#1e3a8a]">{year}</span>
           <Button
             variant="outline"
             size="icon"
             className="h-10 w-10 rounded-lg border-[#1e3a8a] text-[#1e3a8a]"
-            onClick={() => onYearChange(data.year + 1)}
+            onClick={() => onYearChange(year + 1)}
           >
             <ChevronRight className="h-4 w-4" />
             <span className="sr-only">Next year</span>
@@ -80,7 +86,7 @@ export default function SpendingStatistics({ data, onYearChange, className }: Sp
 
       <div
         ref={chartRef}
-        className="h-[300px] w-full relative" // Reduced from 400px to 300px
+        className="h-[400px] w-full relative"
         onMouseMove={handleMouseMove}
         onMouseLeave={() => setActiveBar(null)}
       >
