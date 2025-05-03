@@ -6,9 +6,12 @@ import Button from "@/components/resuable/Button";
 import { useState } from "react";
 import useAuth from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { validateLoginFormWithToast, handleLoginErrorWithToast, showSuccessToast } from "@/utils/handle_errors";
 
 export default function LoginPage() {
-    const { login, loading, error } = useAuth();
+    const { login, loading } = useAuth();
     const router = useRouter();
     const [formData, setFormData] = useState({
         email: "",
@@ -27,31 +30,41 @@ export default function LoginPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         
+        // Validate form inputs with toast notification
+        if (!validateLoginFormWithToast(formData.email, formData.password)) {
+            return;
+        }
+        
         try {
-            // Pass rememberMe to your login function if your backend supports it
+            // Attempt login
             const result = await login({
                 email: formData.email,
                 password: formData.password,
             });
             
-            // If remember me is checked, you could store this preference
-            // in localStorage or use it to set longer-lived tokens on the backend
+            // Handle remember me preference
             if (rememberMe) {
                 localStorage.setItem('rememberMe', 'true');
             } else {
                 localStorage.removeItem('rememberMe');
             }
             
+            // Show success toast
+            showSuccessToast('Login successful!');
+            
             // Redirect to dashboard on successful login
             router.push("/dashboard");
         } catch (err) {
-            // Error handling is done in the useAuth hook with toast notifications
-            console.error("Login failed:", err);
+            // Display error toast notification
+            handleLoginErrorWithToast(err);
         }
     };
     
     return (
         <div className="min-h-screen bg-slate-50 flex flex-col">
+            {/* Toast Container - place this once at the top level of your component */}
+            <ToastContainer />
+            
             <header className="p-6">
                 <div className="max-w-7xl mx-auto">
                     <Image
@@ -81,12 +94,6 @@ export default function LoginPage() {
                                 We've missed you! Please sign in to catch up on what you've missed
                             </p>
                         </div>
-
-                        {error && (
-                            <div className="bg-red-50 text-red-700 p-3 rounded-lg mb-4 text-center">
-                                {error}
-                            </div>
-                        )}
 
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="space-y-2">

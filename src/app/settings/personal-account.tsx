@@ -160,10 +160,7 @@ export default function PersonalAccount() {
                       <SelectValue placeholder="Select country" />
                     </SelectTrigger>
                     <SelectContent className="dark:bg-gray-800 dark:border-gray-700">
-                      <SelectItem value="us" className="dark:text-gray-200 dark:hover:bg-gray-700">United States</SelectItem>
-                      <SelectItem value="ca" className="dark:text-gray-200 dark:hover:bg-gray-700">Canada</SelectItem>
-                      <SelectItem value="uk" className="dark:text-gray-200 dark:hover:bg-gray-700">United Kingdom</SelectItem>
-                      <SelectItem value="au" className="dark:text-gray-200 dark:hover:bg-gray-700">Australia</SelectItem>
+                      <SelectItem value="us" className="dark:text-gray-200 dark:hover:bg-gray-700">Algeria</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

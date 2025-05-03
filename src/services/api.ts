@@ -30,6 +30,13 @@ export interface AuthResponse {
   access: string;
   user: User;
 }
+export interface SignupData {
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  password: string;
+}
 
 // Add request interceptor to include auth token in requests
 api.interceptors.request.use(
@@ -98,7 +105,6 @@ export const authAPI = {
     localStorage.removeItem('refresh_token');
     localStorage.removeItem('user');
   },
-
   getCurrentUser: (): User | null => {
     const userStr = localStorage.getItem('user');
     if (userStr) {
@@ -106,6 +112,19 @@ export const authAPI = {
     }
     return null;
   },
+  signup: async (credentials: SignupData): Promise<AuthResponse> => {
+   
+    const response = await fetch('/api/v1/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(credentials),
+    });
+    if (!response.ok) {
+      throw new Error('Signup failed');
+    }
+    return response.json();
+  },
+
 };
 
 export default api;

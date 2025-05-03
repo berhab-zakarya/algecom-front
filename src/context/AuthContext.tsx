@@ -1,6 +1,6 @@
 // context/AuthContext.tsx
 import React, { createContext, useReducer, useEffect } from 'react';
-import { authAPI, User, LoginCredentials } from '../services/api';
+import { authAPI, User, LoginCredentials, SignupData } from '../services/api';
 
 // Define the state type
 interface AuthState {
@@ -72,6 +72,7 @@ const authReducer = (state: AuthState, action: AuthAction): AuthState => {
 interface AuthContextType {
   state: AuthState;
   login: (credentials: LoginCredentials) => Promise<void>;
+  signup: (credentials: SignupData) => Promise<void>;
   logout: () => Promise<void>;
   resetError: () => void;
 }
@@ -155,6 +156,26 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }
   };
 
+  // Signup function
+  const signup = async (credentials: SignupData) => {
+    dispatch({ type: 'AUTH_START' });
+
+    try {
+      const response = await authAPI.signup(credentials);
+
+      // Store tokens and user data
+      localStorage.setItem('access_token', response.access);
+      localStorage.setItem('refresh_token', response.refresh);
+      localStorage.setItem('user', JSON.stringify(response.user));
+
+      dispatch({ type: 'AUTH_SUCCESS', payload: response.user });
+    } catch (error: any) {
+      const errorMessage = error.response?.data?.message || 'Signup failed. Please try again.';
+      dispatch({ type: 'AUTH_FAILURE', payload: errorMessage });
+      throw error;
+    }
+  };
+
   // Reset error state
   const resetError = () => {
     dispatch({ type: 'AUTH_RESET_ERROR' });
@@ -164,6 +185,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const contextValue: AuthContextType = {
     state,
     login,
+    signup,
     logout,
     resetError,
   };
