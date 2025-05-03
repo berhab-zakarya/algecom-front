@@ -2,7 +2,7 @@
 module.exports = {
   darkMode: 'class',
   content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}"
+    "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -102,6 +102,7 @@ module.exports = {
       },
       fontFamily: {
         algecom: ['var(--font-algecom)'],
+        outfit: ['var(--font-outfit)'], 
       },
       keyframes: {
 
